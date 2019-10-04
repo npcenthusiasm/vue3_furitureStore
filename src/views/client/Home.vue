@@ -22,24 +22,24 @@
       </div>
     </div>
     <div class="container mb-4">
-      <h3 id="hot">熱門商品</h3>
+      <h3 id="category" class="wow fadeInLeft" data-wow-delay="0.5s">商品類別</h3>
       <div class="row mb-4 ">
         <div class="col-4">
-          <div class="bg-cover product-item product-1" >
+          <div class="bg-cover product-item product-1 wow zoomIn" data-wow-offset="300">
             <router-link class="black-cover" style="text-decoration: none"
             to="/productList"><span class="font-weight-bold h3">各式桌椅</span>
             </router-link>
           </div>
         </div>
         <div class="col-4">
-          <div class="bg-cover product-item product-2">
+          <div class="bg-cover product-item product-2 wow zoomIn" data-wow-offset="300">
             <router-link class="black-cover" style="text-decoration: none"
             to="/productList"><span class="font-weight-bold h3">各式桌椅</span>
             </router-link>
           </div>
         </div>
         <div class="col-4">
-          <div class="bg-cover product-item product-3">
+          <div class="bg-cover product-item product-3 wow zoomIn" data-wow-offset="300">
             <router-link class="black-cover" style="text-decoration: none"
             to="/productList"><span class="font-weight-bold h3">燈具</span>
             </router-link>
@@ -48,14 +48,14 @@
       </div>
       <div class="row mb-4">
         <div class="col-6">
-          <div class="bg-cover product-item product-4">
+          <div class="bg-cover product-item product-4 wow zoomIn" data-wow-offset="400">
             <router-link class="black-cover" style="text-decoration: none"
             to="/productList"><span class="font-weight-bold h3">寢具</span>
             </router-link>
           </div>
         </div>
         <div class="col-6">
-          <div class="bg-cover product-item product-5">
+          <div class="bg-cover product-item product-5 wow zoomIn" data-wow-offset="400">
             <router-link class="black-cover" style="text-decoration: none"
             to="/productList"><span class="font-weight-bold h3">沙發</span>
             </router-link>
@@ -63,14 +63,19 @@
         </div>
       </div>
     </div>
+    <div class="container">
+      <h3 id="hot" class="wow fadeInLeft" data-wow-delay="0.5s">熱門商品</h3>
+      <Swiper />
+    </div>
     <div class="container mb-4">
-      <h3 id="new">最新消息</h3>
+      <h3 id="new" class="wow fadeInLeft" data-wow-offset="50">最新消息</h3>
       <div class="row">
         <div class="col-md-6 mb-3 text-center d-flex align-items-center justify-content-center">
           <div style="">
             <h1>使用優惠券代碼「magic」可獲得50％的優惠。</h1>
             <p>(售完為止)</p>
-            <router-link to="/productList" class="btn btn-outline-primary">查看更多</router-link>
+            <router-link to="/productList" class="btn btn-outline-primary rounded-0">
+            查看更多</router-link>
           </div>
         </div>
         <div class="col-md-6">
@@ -90,7 +95,15 @@
     </div>
   </div>
 </template>
+<script>
+import Swiper from '@/components/Swiper.vue';
 
+export default {
+  components: {
+    Swiper,
+  },
+};
+</script>
 <style lang="scss" scoped>
   .carousel-item {
     height:400px;
@@ -100,6 +113,7 @@
   }
   .carousel-1 {
   background-image: url('../../assets/images/carousel-1.jpg');
+
   }
   .carousel-2 {
   background-image: url('../../assets/images/carousel-2.jpg');

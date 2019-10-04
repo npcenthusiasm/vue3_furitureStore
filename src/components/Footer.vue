@@ -4,7 +4,7 @@
       <hr />
       <div class="container-fluid">
         <div class="row">
-          <div class="col-6 col-sm-4">
+          <div class="col-6 col-sm-4 wow fadeIn" data-wow-offset="100">
             <ul class="list-group">
               <li class="list-group-item h5" id="about">ABOUT</li>
               <li class="list-group-item">
@@ -18,7 +18,7 @@
               </li>
             </ul>
           </div>
-          <div class="col-6 col-sm-4">
+          <div class="col-6 col-sm-4 wow fadeIn" data-wow-offset="100" data-wow-delay="0.5s">
             <ul class="list-group">
               <li class="list-group-item h5">MEMBERS</li>
               <li class="list-group-item">
@@ -29,7 +29,7 @@
               </li>
             </ul>
           </div>
-          <div class="col-6 col-sm-4">
+          <div class="col-6 col-sm-4 wow fadeIn" data-wow-offset="100" data-wow-delay="1s">
             <ul class="list-group">
               <li class="list-group-item h5">CONTACT</li>
               <li class="list-group-item">
@@ -51,7 +51,7 @@
           <div class="form-group">
             <input class="form-control rounded-0" type="text" placeholder="Email">
             </div>
-            <button href="#" class="btn btn-outline-secondary rounded-0 w-100">SUBSCRIBE</button>
+            <button href="#" class="btn btn-outline-primary rounded-0 w-100">SUBSCRIBE</button>
           </div>
         </div>
       </div>
@@ -86,7 +86,21 @@
     </footer>
   </div>
 </template>
+<script>
+import { WOW } from 'wowjs';
 
+export default {
+  mounted() {
+    const wow = new WOW({
+      boxClass: 'wow',
+      animateClass: 'animated',
+      offset: 0,
+      mobile: true,
+    });
+    wow.init();
+  },
+};
+</script>
 <style lang="scss" scoped>
 .list-group {
   .list-group-item {

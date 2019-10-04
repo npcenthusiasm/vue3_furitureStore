@@ -69,7 +69,7 @@
             </div>
             <!--  -->
           </div>
-          <pagination :page="pagination" @switch="getProducts"></pagination>
+          <pagination />
         </div>
       </div>
     </div>
@@ -97,8 +97,8 @@ export default {
     };
   },
   methods: {
-    getProducts(page = 1) { // page = 1
-      this.$store.dispatch('productListModules/getProducts', page);
+    getProducts(currentCategory, page = 1) { // page = 1
+      this.$store.dispatch('productListModules/getProducts', { page, currentCategory });
     },
     getCategory(selected) {
       const vm = this;
@@ -125,7 +125,7 @@ export default {
       this.currentCategory = this.$route.query.category;
       this.$router.push('/productList');
     }
-    this.getProducts();
+    this.getProducts(this.currentCategory);
   },
 };
 </script>

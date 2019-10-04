@@ -7,6 +7,10 @@ import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 import 'bootstrap';
 import 'animate.css';
+import { WOW } from 'wowjs';
+import VueAwesomeSwiper from 'vue-awesome-swiper';
+// eslint-disable-next-line
+import 'swiper/dist/css/swiper.css';
 import VeeValidate from 'vee-validate';
 import zhTW from 'vee-validate/dist/locale/zh_TW';
 import VueI18n from 'vue-i18n';
@@ -18,6 +22,7 @@ import currencyFilter from './filters/currency';
 import timestampToDataFilter from './filters/timestampToData';
 
 Vue.config.productionTip = false;
+Vue.use(VueAwesomeSwiper);
 Vue.use(VueAxios, axios);
 Vue.use(Vuex);
 
@@ -40,6 +45,7 @@ Vue.use(VeeValidate, {
 
 axios.defaults.withCredentials = true;
 
+new WOW({ live: false }).init();
 new Vue({
   router,
   store,
@@ -68,4 +74,8 @@ router.beforeEach((to, from, next) => {
   } else {
     next();
   }
+});
+
+router.afterEach(() => {
+  window.scrollTo(0, 0);
 });
