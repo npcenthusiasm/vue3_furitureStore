@@ -1,18 +1,38 @@
 <template>
   <div>
-    <div class="container mb-4 p-0">
-      <nav class="navbar navbar-expand-md navbar-light">
-        <router-link to="/" class="navbar-brand navbar-logo
-        bg-transparent shadow-none font-weight-bold">Furniture's Store</router-link>
+    <div class="container-fluid p-0">
+      <nav class="navbar navbar-expand-md navbar-light py-0">
+        <router-link to="/" class="navbar-brand navbar-logo">U Like</router-link>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
-          data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-          aria-expanded="false" aria-label="Toggle navigation">
+          data-target="#navbarSupportedContent">
         <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+            <li class="nav-item">
+              <router-link to="/productList" class="nav-link"
+              :class="{'active': $route.name === 'ProductList' }">商品列表
+              </router-link>
+            </li>
+            <li class="nav-item">
+              <router-link to="/latestNews" class="nav-link"
+              :class="{'active': $route.name === 'LatestNews' }">最新公告
+              </router-link>
+            </li>
+            <li class="nav-item ">
+              <router-link to="/latestNews" class="nav-link">商品列表
+              </router-link>
+            </li>
+            <li class="nav-item ">
+              <router-link to="/productList" class="nav-link">商品列表
+              </router-link>
+            </li>
+            <li class="nav-item ">
+              <router-link to="/productList" class="nav-link">商品列表
+              </router-link>
+            </li>
+            <li class="nav-item">
               <router-link to="/productList" class="nav-link">商品列表
               </router-link>
             </li>
@@ -105,6 +125,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$main : #f5b937;
+.navbar-nav {
+  .active {
+    border-bottom: 2px solid $main;
+    padding-bottom: -2px;
+  }
+  // background-color: $main;
+}
+.navbar-logo {
+  background: $main;
+  box-shadow: none;
+  font-weight: 600;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 30px;
+}
 .cart-img {
   background-position: center center;
   background-size: cover;
@@ -130,12 +165,12 @@ export default {
   &::before {
     content: '';
     position: absolute;
-    bottom:0;
+    bottom:-2px;
     left: 0;
     height: 2px;
     width: 0;
     display:inline-block;
-    background: #000;
+    background: $main;
     transition: width .6s;
   }
   &:hover::before {

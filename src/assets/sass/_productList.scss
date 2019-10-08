@@ -1,0 +1,57 @@
+
+.productlist {
+  .banner-img {
+    background-size: cover;
+    background-position: center center;
+    height: 400px;
+    background-image: url('~@/assets/images/banner.jpg');
+  }
+  .list-group .active {
+    background-color: $custom-yellow;
+  }
+  .list-group-item {
+    cursor: pointer;
+    border: 0;
+  }
+  .card {
+    cursor: pointer;
+  }
+  .card-bg-cover {
+    background-size: cover;
+    background-position: center center;
+    height: 200px;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+  .box-shadow {
+    box-shadow: 0 3px 5px  rgba(0, 0, 0, .16);
+  }
+  .box-shadow:hover {
+    box-shadow: 0 3px 5px  rgba(0, 0, 0, 0.7);
+  }
+  @keyframes flicker {
+    0%{opacity: 1;}
+    50%{opacity: 0;}
+    100%{opacity: 1;}
+  }
+  .flicker {
+    animation: flicker 2s linear infinite;
+  }
+  
+  @include media-breakpoint-down(md) {
+    .jumbotron h1 {
+      font-size: 40px;
+    }
+  }
+  @include media-breakpoint-down(sm) {
+    .jumbotron h1 {
+      font-size: 30px;
+    }
+    .card-bg-cover {
+      background-size: cover;
+      background-position: center center;
+      height: 300px;
+    }
+  }
+}

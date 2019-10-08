@@ -45,6 +45,9 @@ $green:   #28a745 !default;
 $teal:    #20c997 !default;
 $cyan:    #17a2b8 !default;
 $custom:  #7b776c !default; // i'm add
+$custom-gray: #f4f4f4 !default;
+$custom-white: #ffffff !default;
+$main:    #f5b937 !default; // i'm add
 
 $colors: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
@@ -71,11 +74,10 @@ $primary:       $blue !default;
 $secondary:     $gray-600 !default;
 $success:       $green !default;
 $info:          $cyan !default;
-$warning:       $yellow !default;
+$warning:     #f5b937 !default; //$yellow !default;
 $danger:        $red !default;
-$light:         $gray-100 !default;
+$light:         $main !default; // $gray-100 !default;
 $dark:          $gray-800 !default;
-
 $theme-colors: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $theme-colors: map-merge(
@@ -86,7 +88,7 @@ $theme-colors: map-merge(
     "info":       $info,
     "warning":    $warning,
     "danger":     $danger,
-    "light":      $light,
+    "light":      $main,// $light,
     "dark":       $dark
   ),
   $theme-colors

@@ -1,0 +1,95 @@
+.latestNews {
+  .news-img {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    max-height: 350px;
+    width: 100%;
+    background-color: #40000094; 
+    &::after {
+      content: '';
+      position: absolute;
+      background-image: url(https://images.unsplash.com/photo-1506727407824-5c3efd2127e4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background-position: center center ;
+      background-size: cover;
+      opacity: 0.5;
+      z-index: -1;   
+    }
+    .news-title {
+      color: $content;
+      font-size: 40px;
+    }
+    .news-content {
+      color: $content;
+      letter-spacing: 6px;
+      font-weight: 600;
+    }
+  }
+  .coupon-group {
+    position: relative;
+    background-color: $rose;
+    .percent-circle {
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      line-height: 100px;
+      text-align: center;
+      background-color: #e81e2559;
+      color: $content;
+      opacity: 80%;
+      border-radius: 50%;
+      font-size: 30px;
+      &::after {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: 3px;
+        border: 2px solid $content;
+        border-radius: 50%;
+      }
+    }
+    .coupon-info {
+      border: 2px solid $sweet;
+      color: $content;
+      .coupon-title {
+        font-size: 30px;
+        letter-spacing: 6px;
+        font-weight: 600;
+      }
+      .coupon-content {
+        text-align: center;
+        font-size: 20px;
+        font-weight: 600;
+      }
+    }
+  }
+  .coupon-code {
+    background-color: #f15750;
+    .coupon-info {
+      border: 2px solid $sweet;
+      color: $content;
+      .coupon-header {
+        text-align: center;
+      }
+      .coupon-title {
+        font-size: 20px;
+        letter-spacing: 6px;
+        font-weight: 600;
+      }
+    }
+  }
+}

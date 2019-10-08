@@ -1,12 +1,14 @@
 <template>
-  <div>
-    <div class="jumbotron jumbotron-fluid jumbotron-bg-cover d-flex banner-img">
-      <div class="container" >
-        <h1 class="display-4 text-white shadow">即使風格變化，一樣井井有條</h1>
-        <p class="lead"></p>
+  <div class="productlist">
+    <div class="container-fluid">
+      <div class="jumbotron jumbotron-fluid d-flex banner-img">
+        <div class="container" >
+          <h1 class="text-white shadow d-inline-block">即使風格變化，一樣井井有條</h1>
+          <p class="lead"></p>
+        </div>
       </div>
     </div>
-    <div class="container mb-4">
+    <div class="container-fluid mb-4">
       <div class="bg-white ml-0">
         <nav aria-label="breadcrumb" style="">
           <ol class="breadcrumb bg-white">
@@ -130,12 +132,14 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style>
+/* 
+$main : #f5b937;
 .banner-img {
   background-image: url('../../assets/images/banner.jpg')
 }
 .list-group .active {
-  background-color: rgba(128, 128, 128, 0.925);
+  background-color: $main;
 }
 .list-group-item {
   cursor: pointer;
@@ -174,4 +178,11 @@ export default {
 .flicker {
   animation: flicker 2s linear infinite;
 }
+
+@include media-breakpoint-down(md) {
+  .jumbotron h1 {
+    font-size: 10px;
+  }
+} */
+
 </style>

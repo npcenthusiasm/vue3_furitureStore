@@ -45,6 +45,21 @@ export default new Router({
           name: 'OrderCompelete',
           component: () => import('./views/client/OrderCompelete.vue'),
         },
+        {
+          path: '/latestNews',
+          name: 'LatestNews',
+          component: () => import('./views/client/LatestNews.vue'),
+        },
+        {
+          path: '/marketInfo',
+          name: 'MarketInfo',
+          component: () => import('./views/client/MarketInfo.vue'),
+        },
+        {
+          path: '/aboutUs',
+          name: 'AboutUs',
+          component: () => import('./views/client/AboutUs.vue'),
+        },
       ],
     },
     {
