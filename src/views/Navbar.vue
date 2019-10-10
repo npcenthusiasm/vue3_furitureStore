@@ -1,44 +1,45 @@
 <template>
-  <div>
-    <div class="container-fluid p-0">
-      <nav class="navbar navbar-expand-md navbar-light py-0">
-        <router-link to="/" class="navbar-brand navbar-logo">U Like</router-link>
-        <button class="navbar-toggler" type="button" data-toggle="collapse"
-          data-target="#navbarSupportedContent">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <router-link to="/productList" class="nav-link"
-              :class="{'active': $route.name === 'ProductList' }">商品列表
-              </router-link>
-            </li>
-            <li class="nav-item">
-              <router-link to="/latestNews" class="nav-link"
-              :class="{'active': $route.name === 'LatestNews' }">最新公告
-              </router-link>
-            </li>
-            <li class="nav-item ">
-              <router-link to="/latestNews" class="nav-link">商品列表
-              </router-link>
-            </li>
-            <li class="nav-item ">
-              <router-link to="/productList" class="nav-link">商品列表
-              </router-link>
-            </li>
-            <li class="nav-item ">
-              <router-link to="/productList" class="nav-link">商品列表
-              </router-link>
-            </li>
-            <li class="nav-item">
-              <router-link to="/productList" class="nav-link">商品列表
-              </router-link>
-            </li>
-          </ul>
-
-          <ul class="list-inline mb-0">
+  <div class="navbar">
+    <nav>
+      <div class="logo">
+        <router-link to="/">Flover</router-link>
+      </div>
+      <ul class="nav-links">
+        <li>
+          <router-link @click.native="closeBurger" to="/productList" class="nav-link"
+          :class="{'active': $route.name === 'ProductList' }"
+          >所有商品
+          </router-link>
+        </li>
+        <li>
+          <router-link @click.native="closeBurger" :to="{ name:'ProductList',query: { category: '各式桌椅' }}"
+          class="nav-link"
+          :class="{'active': $route.name === 'LatestNews' }"
+          >各式桌椅
+          </router-link>
+        </li>
+        <li>
+          <router-link @click.native="closeBurger" :to="{ name:'ProductList',query: { category: '沙發' }}"
+          class="nav-link"
+          :class="{'active': $route.name === 'LatestNews' }"
+          >沙發手扶椅
+          </router-link>
+        </li>
+        <li>
+          <router-link @click.native="closeBurger" to="/latestNews" class="nav-link"
+          :class="{'active': $route.name === 'LatestNews' }"
+          >床墊寢具
+          </router-link>
+        </li>
+        <li>
+          <router-link @click.native="closeBurger" to="/latestNews" class="nav-link"
+          :class="{'active': $route.name === 'LatestNews' }"
+          >照明燈具
+          </router-link>
+        </li>
+      </ul>
+      <!--  -->
+      <ul class="list-inline mb-0">
             <li class="list-inline-item">
               <router-link to="/login"
               class="btn btn-outline-primary rounded-circle">
@@ -49,7 +50,7 @@
               <button class="btn btn-outline-primary rounded-circle btn-cart"
               data-toggle="dropdown">
                 <i class="fa fa-shopping-bag"></i>
-                <span class="badge badge-pill badge-danger">{{cartsCount}}</span>
+                <div class="badge badge-pill badge-danger">{{cartsCount}}</div>
               </button>
               <div class="dropdown-menu dropdown-menu-right" style="min-width: 300px;z-index:1021;">
                 <div class="px-4 py-3">
@@ -78,7 +79,6 @@
                       </tbody>
                     </table>
                     <p v-if="cartsCount === 0">是空的</p>
-
                   </div>
                   <div v-if="cartsCount !== 0">
                     <hr>
@@ -93,26 +93,46 @@
               </div>
             </li>
           </ul>
-        </div>
-      </nav>
-    </div>
+      <!--  -->
+      <div class="burger" @click="bugerToggle">
+        <div class="line"></div>
+        <div class="middle"></div>
+        <div class="bottom"></div>
+      </div>
+    </nav>
   </div>
 </template>
-
 <script>
+import $ from 'jquery';
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
   data() {
     return {
-      // carts: [],
-      // total: 0,
+      buggerOpen: false,
     };
   },
   methods: {
     ...mapActions('cartsModules', ['getCart']),
     removeCart(id) {
       this.$store.dispatch('cartsModules/removeCart', id);
+    },
+    bugerToggle() {
+      const vm = this;
+        vm.buggerOpen = !vm.buggerOpen;
+        $('.nav-links').toggleClass('active');  
+        $('.burger').toggleClass('active');
+        $('body').toggleClass('hidden');
+    },
+    closeBurger() {
+      // 點連結切換頁面時，如果menu是開啟的狀態，將其取消
+      const vm = this;
+       if (this.buggerOpen) {
+        $('.nav-links').removeClass('active');  
+        $('.burger').removeClass('active');
+        $('body').removeClass('hidden');
+        vm.buggerOpen = false;
+      }
     },
   },
   computed: {
@@ -123,58 +143,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-$main : #f5b937;
-.navbar-nav {
-  .active {
-    border-bottom: 2px solid $main;
-    padding-bottom: -2px;
-  }
-  // background-color: $main;
-}
-.navbar-logo {
-  background: $main;
-  box-shadow: none;
-  font-weight: 600;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 30px;
-}
-.cart-img {
-  background-position: center center;
-  background-size: cover;
-  width: 50px;
-  height: 50px;
-}
-.btn-cart {
-  position: relative;
-  .badge {
-    position: absolute;
-    right: -10px;
-    top: 0px;
-  }
-}
-.cart-scroll {
-  max-height: 200px;
-  overflow: auto;
-}
-.nav-link {
-  position: relative;
-  text-decoration:none;
-  display: inline-block;
-  &::before {
-    content: '';
-    position: absolute;
-    bottom:-2px;
-    left: 0;
-    height: 2px;
-    width: 0;
-    display:inline-block;
-    background: $main;
-    transition: width .6s;
-  }
-  &:hover::before {
-    width:100%;
-  }
-}
-</style>
