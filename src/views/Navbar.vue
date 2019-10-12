@@ -12,14 +12,16 @@
           </router-link>
         </li>
         <li>
-          <router-link @click.native="closeBurger" :to="{ name:'ProductList',query: { category: '各式桌椅' }}"
+          <router-link @click.native="closeBurger"
+          :to="{ name:'ProductList',query: { category: '各式桌椅' }}"
           class="nav-link"
           :class="{'active': $route.name === 'LatestNews' }"
           >各式桌椅
           </router-link>
         </li>
         <li>
-          <router-link @click.native="closeBurger" :to="{ name:'ProductList',query: { category: '沙發' }}"
+          <router-link @click.native="closeBurger"
+          :to="{ name:'ProductList',query: { category: '沙發' }}"
           class="nav-link"
           :class="{'active': $route.name === 'LatestNews' }"
           >沙發手扶椅
@@ -119,16 +121,16 @@ export default {
     },
     bugerToggle() {
       const vm = this;
-        vm.buggerOpen = !vm.buggerOpen;
-        $('.nav-links').toggleClass('active');  
-        $('.burger').toggleClass('active');
-        $('body').toggleClass('hidden');
+      vm.buggerOpen = !vm.buggerOpen;
+      $('.nav-links').toggleClass('active');
+      $('.burger').toggleClass('active');
+      $('body').toggleClass('hidden');
     },
     closeBurger() {
       // 點連結切換頁面時，如果menu是開啟的狀態，將其取消
       const vm = this;
-       if (this.buggerOpen) {
-        $('.nav-links').removeClass('active');  
+      if (this.buggerOpen) {
+        $('.nav-links').removeClass('active');
         $('.burger').removeClass('active');
         $('body').removeClass('hidden');
         vm.buggerOpen = false;

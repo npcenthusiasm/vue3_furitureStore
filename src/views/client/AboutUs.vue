@@ -30,9 +30,9 @@
       </div>
        <div class="col-md-6 p-4">
         <div class="about-title">
-           <h2>永續發展的未來</h2>
-          <!-- eslint-disable-next-line -->
+          <h2>永續發展的未來</h2>
           <p class="text-justify">
+            <!-- eslint-disable-next-line -->
             我們的世界正在迅速變化，但我們對未來感到樂觀。 我們相信，隨著時間的推移，越來越多的人可以並且將會擁有更美好的生活。要實現這一目標，需要強大的企圖心和對採取立即行動的承諾。它還意味著借由同心協力來應對我們無法單獨解決的重大挑戰。
           </p>
         </div>
@@ -77,7 +77,6 @@
     color: #555;
     text-align: center;
   }
-  
   .about-title {
     letter-spacing: .2em;
     text-transform: uppercase;

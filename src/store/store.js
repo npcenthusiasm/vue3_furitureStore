@@ -12,7 +12,6 @@ export default new Vuex.Store({
   strict: true, // 嚴謹模式
   state: {
     isLoading: false,
-    pagination: {},
   },
   actions: {
     // payload 載荷
@@ -23,9 +22,6 @@ export default new Vuex.Store({
   mutations: {
     LOADING(state, status) {
       state.isLoading = status;
-    },
-    PAINATION(state, payload) {
-      state.pagination = payload;
     },
   },
   getters: {

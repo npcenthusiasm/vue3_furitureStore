@@ -27,7 +27,25 @@
         </tr>
       </tbody>
     </table>
-    <pagination :page="pagination" @switch="getCoupons"></pagination>
+    <!-- <pagination></pagination> -->
+
+
+     <nav aria-label="..." class="d-flex justify-content-center" >
+      <ul class="pagination ">
+        <li class="page-item" :class="{'disabled': !pagination.has_pre}">
+          <a class="page-link" href="#" tabindex="-1" aria-disabled="true"
+          @click.prevent="getCoupons(pagination.current_page - 1)">P R E V</a>
+        </li>
+        <li class="page-item" v-for="item in pagination.total_pages" :key="item"
+        :class="{'active':pagination.current_page === item}">
+          <a class="page-link" href="#" @click.prevent="getCoupons(item)">{{item}}</a>
+        </li>
+        <li class="page-item" :class="{'disabled': !pagination.has_next}">
+          <a class="page-link" href="#"
+          @click.prevent="getCoupons(pagination.current_page + 1)">N E X T</a>
+        </li>
+      </ul>
+    </nav>
     <!-- add coupon modal -->
     <div class="modal" tabindex="-1" role="dialog" id="couponModel">
       <div class="modal-dialog" role="document">
@@ -99,11 +117,12 @@
 
 <script>
 import $ from 'jquery';
-import pagination from '@/components/Pagination.vue';
+import { mapGetters } from 'vuex';
+// import pagination from '@/components/Pagination.vue';
 
 export default {
   components: {
-    pagination,
+    // pagination,
   },
   data() {
     return {
@@ -195,6 +214,9 @@ export default {
         }
       });
     },
+  },
+  computed: {
+    // ...mapGetters(['pagination']),
   },
   created() {
     this.getCoupons();

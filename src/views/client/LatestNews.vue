@@ -1,7 +1,10 @@
 <template>
   <div class="latestNews">
     <div class="container-fluid">
-      <h1>最新公告</h1>
+      <div class="title my-4">
+        <div>Lastest News</div>
+        <h1 class="h5">最新消息</h1>
+      </div>
       <div class="row">
         <div class="col">
           <div class="news-img">
