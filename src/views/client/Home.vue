@@ -8,7 +8,8 @@
             <h2 class="header-title">為即將到來的冷冽季節做好準備～</h2>
             <p class="header-text">充滿個人風格和正能量的新色和材質即將成為新潮流!
             </p>
-            <router-link to="/productList" class="btn btn-warning rounded-0 d-block w-50">Go~</router-link>
+            <router-link to="/productList" class="btn btn-warning rounded-0 d-block w-50">
+            Go~</router-link>
           </div>
         </div>
         <div class="col-8 pl-5 pt-5 right-content">
@@ -21,64 +22,54 @@
       <div class="row py-2 wrap">
         <div class="col-md-6">
           <div class="row">
-            <div class="col-md-6 mb-4">
-              <router-link to="/productList"
+            <div class="col-md-6 mb-4 wow zoomIn" data-wow-delay="0.5s">
+              <a href="#" @click.prevent="goPrductList('各式桌椅')"
               class="img-jump bg-cover home-img-1">
                 <div class="discription">
-                  <i class="fas fa-table"></i>
-                  <ul>
-                    <li class="">table</li>
-                    <li>桌</li>
-                  </ul>
+                  <i class="fas fa-table fa-3x"></i>
+                  table
                 </div>
-              </router-link>
+              </a>
             </div>
-            <div class="col-md-6 mb-4 ">
-              <router-link to="/productList" 
+
+            <div class="col-md-6 mb-4 wow zoomIn" data-wow-delay="0.5s">
+              <a href="#" @click.prevent="goPrductList('各式桌椅')"
               class="img-jump bg-cover home-img-2">
                 <div class="discription">
-                  <i class="fas fa-chair"></i>
-                  <ul>
-                    <li class="">chair</li>
-                    <li>椅</li>
-                  </ul>
+                  <i class="fas fa-chair fa-3x"></i>
+                  chair
                 </div>
-              </router-link>
+              </a>
             </div>
-            <div class="col-md-6 mb-4">
-              <router-link to="/productList" class="img-jump bg-cover home-img-3">
+            <div class="col-md-6 mb-4 wow zoomIn" data-wow-delay="0.75s">
+              <a href="#" @click.prevent="goPrductList('照明燈具')"
+              class="img-jump bg-cover home-img-3">
                 <div class="discription">
-                  <i class="fas fa-lightbulb"></i>
-                  <ul>
-                    <li class="">light</li>
-                    <li>燈</li>
-                  </ul>
+                  <i class="fas fa-lightbulb fa-3x"></i>
+                    light
                 </div>
-              </router-link>
+              </a>
             </div>
-            <div class="col-md-6 mb-4">
-              <router-link to="/productList" class="img-jump bg-cover home-img-4">
+            <div class="col-md-6 mb-4 wow zoomIn" data-wow-delay="0.75s">
+              <a href="#" @click.prevent="goPrductList('床墊寢具')"
+              class="img-jump bg-cover home-img-4">
                 <div class="discription">
-                  <i class="fas fa-couch"></i>
-                  <ul>
-                    <li class="">床</li>
-                    <li>bed</li>
-                  </ul>
+                  <i class="fas fa-couch fa-3x"></i>
+                  bed
                 </div>
-              </router-link>
+              </a>
             </div>
-          </div>  
+          </div>
         </div>
         <div class="col-md-6 mb-4">
-          <router-link to="/productList" class="img-jump bg-cover home-img-5">
+          <a href="#" @click.prevent="goPrductList('沙發扶手椅')"
+          class="img-jump bg-cover home-img-5 wow zoomIn"
+          data-wow-delay=".5s" data-wow-duration="1s">
             <div class="discription">
-              <i class="fas fa-couch"></i>
-              <ul>
-                <li class="">sofa</li>
-                <li>沙發</li>
-              </ul>
+              <i class="fas fa-couch fa-3x"></i>
+              sofa
             </div>
-          </router-link>
+          </a>
         </div>
       </div>
     </div>
@@ -122,146 +113,11 @@ export default {
   components: {
     Swiper,
   },
+  methods: {
+    goPrductList(category) {
+      this.$store.dispatch('productListModules/getLgCategory', category);
+      this.$router.push('/productList');
+    },
+  },
 };
 </script>
-
-<style lang="scss">
-
-// .home {
-//   .header-wrap {
-//     background-color: $custom-gray ;
-//     .left-content {
-//       position: relative;
-//       .header {
-//         position: absolute;
-//         left: 80%;
-//         top: 20%;
-//         z-index: 1;
-//         margin-right: -200px;
-//         .header-title {
-//           color:#272b36 ;
-//           font-weight: 600;
-//         }
-//         .header-text {
-//           color: #272b36;
-//           font-weight: 600;
-//         }
-//       }
-//     }
-//   }
-  
-//   .home-img-1 {
-//     background-image: url('../../assets/images/product-1.jpg');
-//   }
-//   .home-img-2 {
-//     background-image: url('../../assets/images/product-2.jpg');
-//   }
-//   .home-img-3 {
-//     background-image: url('../../assets/images/product-3.jpg');
-//   }
-//   .home-img-4 {
-//     background-image: url('../../assets/images/product-4.jpg');
-//   }
-//   .home-img-5 {
-//     background-image: url('../../assets/images/product-5.jpg');
-//   }
-//   .img-jump {
-//     text-decoration: none;
-//     transition: .33s all ease;
-//     position: relative;
-//     display: block;
-//     text-align: center;
-//     overflow: hidden;
-//     cursor: pointer;
-//     img {
-//       display: inline-block;
-//       width: 100%;
-//       height: auto;
-//     }
-//     &:hover .discription {
-//       opacity: 1;
-//       transform: scale(1);
-//       padding: 15px;
-//     }
-//     .discription {
-//       opacity: 0;
-//       transform: scale(.8);
-//       position: absolute;
-//       top: 0;
-//       bottom: 0;
-//       right: 0;
-//       left: 0;
-//       display: flex;
-//       flex-direction: column;
-//       justify-content: center;
-//       padding: 25px;
-//       background-color: rgba(245, 185, 55, 0.5);
-//       color: $custom-gray;
-//       transition: 250ms ease-in-out;
-//       &:hover::before {
-//         opacity: 1;
-//       }
-//       ul {
-//         list-style: none;
-//         margin: 0;
-//         padding: 0;
-//         li {
-//           margin: 1.2rem 0;
-//         }
-//       }
-//     }
-//   }
-
-//   .hot {
-//       background-color: $custom-gray;
-//   }
-//   .titleText {
-//       display: inline-block;
-//       border-bottom: 3px solid $custom-yellow;
-//     }
-
-//   .news {
-//     background-color: $custom-white;
-//     .news-left {
-//       background-color: $custom-gray;
-//       box-shadow: 3px 3px 3px $custom-yellow;
-//     }
-//     .news-right {
-//       background-color: $custom-gray;
-//     }
-//   }
-//   .bg-cover {
-//     background-position: center center ;
-//     background-size: cover;
-//     background-repeat: no-repeat;
-//     min-height: 200px;
-//     height: 100%;
-//     width:100% ;
-//   }
-//   @keyframes flicker {
-//     0%{opacity: 1;}
-//     50%{opacity: 0;}
-//     100%{opacity: 1;}
-//   }
-//   .flicker {
-//     animation: flicker 2s linear infinite;
-//   }
-//   @include media-breakpoint-down(md) {
-//     .jumbotron h1 {
-//       font-size: 40px;
-//     }
-//   }
-//   @include media-breakpoint-down(sm) {
-//    .header-wrap {
-//     .left-content {
-//       .header {
-//         .header-title {
-//           font-size: 40px;
-//         }
-//         .header-text {
-//         }
-//       }
-//     }
-//   }
-// }
-</style>

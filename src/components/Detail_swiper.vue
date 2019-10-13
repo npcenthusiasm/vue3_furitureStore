@@ -1,8 +1,8 @@
 <template>
   <!-- swiper -->
   <swiper :options="swiperOption">
-    <swiper-slide v-for="item in home_hot_products" :key="item.id" class="swiper-slide mb-5">
-      <div @click="$router.push(`/productList/${item.id}`)">
+    <swiper-slide v-for="item in Related_Products" :key="item.id" class="swiper-slide mb-5">
+      <div @click="goDetail(item)">
         <div :style="{backgroundImage: `url(${item.imageUrl})`}" class="bg-cover"></div>
         <div class="py-2 pl-1 detail">
           <div class="h5 font-weight-bold">{{item.title}}</div>
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters } from 'vuex';
 // import 'swiper/dist/css/swiper.css';
 import { swiper, swiperSlide } from 'vue-awesome-swiper';
 
@@ -60,16 +60,18 @@ export default {
     };
   },
   methods: {
-    ...mapActions('productListModules', ['getProducts']),
-    // getProducts() { // page = 1
-    //   this.$store.dispatch('productListModules/getProducts');
-    // },
+    goDetail(product) {
+      this.$router.push({
+        path: '/productList',
+        query: { productId: product.id },
+      });
+    },
   },
   computed: {
-    ...mapGetters('productListModules', ['home_hot_products']),
+    ...mapGetters('productListModules', ['Related_Products']),
   },
   created() {
-    this.getProducts();
+    // this.getProducts();
   },
 };
 </script>

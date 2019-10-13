@@ -76,7 +76,7 @@ $success:       $green !default;
 $info:          $cyan !default;
 $warning:     #f5b937 !default; //$yellow !default;
 $danger:        $red !default;
-$light:         $main !default; // $gray-100 !default;
+$light:         $gray-100 !default;
 $dark:          $gray-800 !default;
 $theme-colors: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
@@ -88,7 +88,7 @@ $theme-colors: map-merge(
     "info":       $info,
     "warning":    $warning,
     "danger":     $danger,
-    "light":      $main,// $light,
+    "light":      $light,
     "dark":       $dark
   ),
   $theme-colors

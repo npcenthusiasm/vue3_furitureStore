@@ -28,7 +28,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$hover:#7b776c;
+@import '../assets/sass/_custom.scss';
+$hover: $custom-yellow;
 .top {
   display: none;
   position: fixed;

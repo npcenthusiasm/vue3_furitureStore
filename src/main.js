@@ -7,7 +7,6 @@ import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 import 'bootstrap';
 import 'animate.css';
-import { WOW } from 'wowjs';
 import VueAwesomeSwiper from 'vue-awesome-swiper';
 // eslint-disable-next-line
 import 'swiper/dist/css/swiper.css';
@@ -45,7 +44,7 @@ Vue.use(VeeValidate, {
 
 axios.defaults.withCredentials = true;
 
-new WOW({ live: false }).init();
+// new WOW({ live: false }).init();
 new Vue({
   router,
   store,

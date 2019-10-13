@@ -5,39 +5,35 @@
         <router-link to="/">Flover</router-link>
       </div>
       <ul class="nav-links">
-        <li>
-          <router-link @click.native="closeBurger" to="/productList" class="nav-link"
-          :class="{'active': $route.name === 'ProductList' }"
+         <li>
+          <a href="#" class="nav-link" @click.prevent="closeBurger('所有商品')"
+          :class="{'active': lgCategory === '所有商品' }"
           >所有商品
-          </router-link>
+          </a>
         </li>
         <li>
-          <router-link @click.native="closeBurger"
-          :to="{ name:'ProductList',query: { category: '各式桌椅' }}"
-          class="nav-link"
-          :class="{'active': $route.name === 'LatestNews' }"
+          <a href="#" class="nav-link" @click.prevent="closeBurger('各式桌椅')"
+          :class="{'active': lgCategory === '各式桌椅' }"
           >各式桌椅
-          </router-link>
+          </a>
         </li>
         <li>
-          <router-link @click.native="closeBurger"
-          :to="{ name:'ProductList',query: { category: '沙發' }}"
-          class="nav-link"
-          :class="{'active': $route.name === 'LatestNews' }"
-          >沙發手扶椅
-          </router-link>
+          <a href="#" class="nav-link" @click.prevent="closeBurger('沙發扶手椅')"
+          :class="{'active': lgCategory === '沙發扶手椅' }"
+          >沙發扶手椅
+          </a>
         </li>
         <li>
-          <router-link @click.native="closeBurger" to="/latestNews" class="nav-link"
-          :class="{'active': $route.name === 'LatestNews' }"
+          <a href="#" class="nav-link" @click.prevent="closeBurger('床墊寢具')"
+          :class="{'active': lgCategory === '床墊寢具' }"
           >床墊寢具
-          </router-link>
+          </a>
         </li>
         <li>
-          <router-link @click.native="closeBurger" to="/latestNews" class="nav-link"
-          :class="{'active': $route.name === 'LatestNews' }"
+          <a href="#" class="nav-link" @click.prevent="closeBurger('照明燈具')"
+          :class="{'active': lgCategory === '照明燈具' }"
           >照明燈具
-          </router-link>
+          </a>
         </li>
       </ul>
       <!--  -->
@@ -125,8 +121,9 @@ export default {
       $('.nav-links').toggleClass('active');
       $('.burger').toggleClass('active');
       $('body').toggleClass('hidden');
+      // :to="{ name:'ProductList',params: { category: '各式桌椅' }}"
     },
-    closeBurger() {
+    closeBurger(category) {
       // 點連結切換頁面時，如果menu是開啟的狀態，將其取消
       const vm = this;
       if (this.buggerOpen) {
@@ -135,10 +132,18 @@ export default {
         $('body').removeClass('hidden');
         vm.buggerOpen = false;
       }
+      // 如果頁面不是在 productList 就導向 productList
+      if (vm.$route.name !== 'ProductList') {
+        this.$store.dispatch('productListModules/getLgCategory', category);
+        vm.$router.push('/productList');
+      } else {
+        this.$store.dispatch('productListModules/getLgCategory', category);
+      }
     },
   },
   computed: {
     ...mapGetters('cartsModules', ['carts', 'total', 'cartsCount']),
+    ...mapGetters('productListModules', ['lgCategory']),
   },
   created() {
     this.getCart();

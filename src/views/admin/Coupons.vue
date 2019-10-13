@@ -117,8 +117,6 @@
 
 <script>
 import $ from 'jquery';
-import { mapGetters } from 'vuex';
-// import pagination from '@/components/Pagination.vue';
 
 export default {
   components: {
@@ -214,9 +212,6 @@ export default {
         }
       });
     },
-  },
-  computed: {
-    // ...mapGetters(['pagination']),
   },
   created() {
     this.getCoupons();

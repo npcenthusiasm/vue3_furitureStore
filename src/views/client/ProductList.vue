@@ -9,84 +9,111 @@
       </div>
     </div>
     <div class="container-fluid mb-4">
-      <div class="bg-white ml-0">
-        <nav aria-label="breadcrumb" style="">
-          <ol class="breadcrumb bg-white">
-            <li class="breadcrumb-item"><router-link to="/">首頁</router-link></li>
-            <li class="breadcrumb-item"><router-link to="/productList">商品列表</router-link></li>
-            <li class="breadcrumb-item active" aria-current="page">{{currentCategory}}</li>
-          </ol>
-        </nav>
+      <div class="d-flex">
+        <div class="">
+          <div class="bg-white ml-0">
+            <nav aria-label="breadcrumb" style="">
+              <ol class="breadcrumb bg-white">
+                <li class="breadcrumb-item"><router-link to="/">首頁</router-link></li>
+                <li class="breadcrumb-item"><router-link to="/productList">商品列表</router-link></li>
+                <li class="breadcrumb-item active" aria-current="page">{{currentCategory}}</li>
+              </ol>
+            </nav>
+          </div>
+
+        </div>
+        <div class="ml-auto sort-list">
+          <div class="dropdown">
+            <div class="dropbtn">
+            <button>{{sortText}}</button>
+            <i class="fas fa-angle-down"></i>
+            </div>
+            <div class="dropdown-content">
+              <a href="#" @click.prevent="sortProduct('default')">商品排序</a>
+              <a href="#" @click.prevent="sortProduct('lowToHigh')">價格 > 由低到高</a>
+              <a href="#" @click.prevent="sortProduct('highToLow')">價格 > 由高到低</a>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="row mb-4">
         <div class="col-md-3 mb-4">
-          <!--
-            <ul class="list-group sticky-top" style="top:10px">
-            <li class="list-group-item list-group-item-action"
-            :class="{'active': item.category === currentCategory}"
-             v-for="item in categories" :key="item.category"
-             @click.prevent="getCategory(item.category)">
-              <i :class="item.icon"></i> {{item.category}}
-            </li>
-          </ul>
-          -->
-          <!-- 
-          { category: '全部商品',detail: ['辦公椅', '餐椅', '摺疊椅', '兒童椅']},
-
-           -->
-          
          <ul class="mainmenu">
-          <!-- <li class="main-link"  @click.prevent="openList"><a>Home</a></li> -->
-          <li><a href="#" @click.prevent="getCategory('全部商品')" class="main-link">
-            全部商品</a>
-          <li><a href="#" @click.prevent="openList" class="main-link">
+          <li><a href="#" @click.prevent="getLgCategory('所有商品')" class="main-link"
+          :class="{'active': currentCategory === '所有商品'}">
+            所有商品</a>
+          <li :class="{'active': openStatus === '各式桌椅'}">
+            <a href="#" @click.prevent="openStatus = '各式桌椅'" class="main-link">
             <i class="fas fa-caret-right"></i>各式桌椅</a>
             <ul class="submenu">
-              <li><a href="#" @click.prevent="getCategory('餐桌')">餐桌</a></li>
-              <li><a href="#" @click.prevent="getCategory('書桌')">書桌</a></li>
-              <li><a href="#" @click.prevent="getCategory('辦公椅')">辦公椅</a></li>
-              <li><a href="#" @click.prevent="getCategory('餐椅')">餐椅</a></li>
-              <li><a href="#" @click.prevent="getCategory('摺疊椅')">摺疊椅</a></li>
-              <li><a href="#" @click.prevent="getCategory('兒童椅')">兒童椅</a></li>
+              <li><a href="#" @click.prevent="getCategory('餐桌')"
+              :class="{'active': currentCategory === '餐桌'}">餐桌</a></li>
+              <li><a href="#" @click.prevent="getCategory('書桌')"
+              :class="{'active': currentCategory === '書桌'}">書桌</a></li>
+              <li><a href="#" @click.prevent="getCategory('辦公椅')"
+              :class="{'active': currentCategory === '辦公椅'}">辦公椅</a></li>
+              <li><a href="#" @click.prevent="getCategory('餐椅')"
+              :class="{'active': currentCategory === '餐椅'}">餐椅</a></li>
+              <li><a href="#" @click.prevent="getCategory('摺疊椅')"
+              :class="{'active': currentCategory === '摺疊椅'}">摺疊椅</a></li>
+              <li><a href="#" @click.prevent="getCategory('兒童椅')"
+              :class="{'active': currentCategory === '兒童椅'}">兒童椅</a></li>
             </ul>
           </li>
-          <li><a href="#" @click.prevent="openList" class="main-link">
+          <li :class="{'active': openStatus === '沙發扶手椅'}">
+            <a href="#" @click.prevent="openStatus = '沙發扶手椅'" class="main-link">
              <i class="fas fa-caret-right"></i>沙發扶手椅</a>
             <ul class="submenu">
-              <li><a href="#" @click.prevent="getCategory('布沙發')">布沙發</a></li>
-              <li><a href="#" @click.prevent="getCategory('沙發床')">沙發床</a></li>
-              <li><a href="#" @click.prevent="getCategory('組合沙發')">組合沙發</a></li>
-              <li><a href="#" @click.prevent="getCategory('扶手椅')">扶手椅</a></li>
+              <li><a href="#" @click.prevent="getCategory('布沙發')"
+              :class="{'active': currentCategory === '布沙發'}">布沙發</a></li>
+              <li><a href="#" @click.prevent="getCategory('沙發床')"
+              :class="{'active': currentCategory === '沙發床'}">沙發床</a></li>
+              <li><a href="#" @click.prevent="getCategory('組合沙發')"
+              :class="{'active': currentCategory === '組合沙發'}">組合沙發</a></li>
+              <li><a href="#" @click.prevent="getCategory('扶手椅')"
+              :class="{'active': currentCategory === '扶手椅'}">扶手椅</a></li>
             </ul>
           </li>
-          <li><a href="#" @click.prevent="openList" class="main-link">
+          <li :class="{'active': openStatus === '床墊寢具'}">
+            <a href="#" @click.prevent="openStatus = '床墊寢具'"
+              class="main-link">
              <i class="fas fa-caret-right"></i>床墊寢具</a>
             <ul class="submenu">
-              <li><a href="#" @click.prevent="getCategory('單人床')">單人床</a></li>
-              <li><a href="#" @click.prevent="getCategory('雙人床')">雙人床</a></li>
-              <li><a href="#" @click.prevent="getCategory('枕頭')">枕頭</a></li>
-              <li><a href="#" @click.prevent="getCategory('棉被')">棉被</a></li>
-              <li><a href="#" @click.prevent="getCategory('嬰兒床')">嬰兒床</a></li>
+              <li><a href="#" @click.prevent="getCategory('單人床')"
+              :class="{'active': currentCategory === '單人床'}">單人床</a></li>
+              <li><a href="#" @click.prevent="getCategory('雙人床')"
+              :class="{'active': currentCategory === '雙人床'}">雙人床</a></li>
+              <li><a href="#" @click.prevent="getCategory('枕頭')"
+              :class="{'active': currentCategory === '枕頭'}">枕頭</a></li>
+              <li><a href="#" @click.prevent="getCategory('棉被')"
+              :class="{'active': currentCategory === '棉被'}">棉被</a></li>
+              <li><a href="#" @click.prevent="getCategory('嬰兒床')"
+              :class="{'active': currentCategory === '嬰兒床'}">嬰兒床</a></li>
             </ul>
           </li>
-          <li><a href="#" @click.prevent="openList" class="main-link">
+          <li :class="{'active': openStatus === '照明燈具'}">
+            <a href="#" @click.prevent="openStatus = '照明燈具'"
+               class="main-link">
              <i class="fas fa-caret-right"></i>照明燈具</a>
             <ul class="submenu">
-              <li><a href="#" @click.prevent="getCategory('LED燈具')">LED燈具</a></li>
-              <li><a href="#" @click.prevent="getCategory('工作燈')">工作燈</a></li>
-              <li><a href="#" @click.prevent="getCategory('落地燈')">落地燈</a></li>
-              <li><a href="#" @click.prevent="getCategory('桌燈')">桌燈</a></li>
+              <li><a href="#" @click.prevent="getCategory('LED燈具')"
+              :class="{'active': currentCategory === 'LED燈具'}">LED燈具</a></li>
+              <li><a href="#" @click.prevent="getCategory('工作燈')"
+              :class="{'active': currentCategory === '工作燈'}">工作燈</a></li>
+              <li><a href="#" @click.prevent="getCategory('落地燈')"
+              :class="{'active': currentCategory === '落地燈'}">落地燈</a></li>
+              <li><a href="#" @click.prevent="getCategory('桌燈')"
+              :class="{'active': currentCategory === '桌燈'}">桌燈</a></li>
             </ul>
-          </li>          
+          </li>
         </ul>
-        
         </div>
         <div class="col-md-9">
           <div class="row">
             <!-- 2 -->
             <div class="col-md-6 col-lg-4 mb-3" v-for="item in filterPageProduct" :key="item.id">
               <div class="card box-shadow h-100"
-              @click.stop="$router.push(`/productList/${item.id}`)"
+              @click.stop="goDetail(item)"
               >
                 <div class="card-bg-cover"
                 :style="{backgroundImage: `url(${item.imageUrl})`}">
@@ -131,7 +158,6 @@
 </template>
 
 <script>
-import $ from 'jquery';
 import { mapGetters, mapActions } from 'vuex';
 import Pagination from '@/components/Pagination.vue';
 
@@ -141,95 +167,56 @@ export default {
   },
   data() {
     return {
-      currentCategory: '全部商品',
-      categories: [
-        { category: '全部商品',detail: ['辦公椅', '餐椅', '摺疊椅', '兒童椅']},
-        // { category: '全部商品', icon: 'fas fa-align-justify' },
-        // { category: '各式桌椅', icon: 'fas fa-chair' },
-        // { category: '寢具', icon: 'fas fa-bed' },
-        // { category: '沙發', icon: 'fas fa-couch' },
-        // { category: '燈具', icon: 'fas fa-lightbulb' },
-      ],
+      // currentCategory: '全部商品',
+      openStatus: '',
+      selected: '',
+      sortText: '商品排序',
     };
   },
   methods: {
-   ...mapActions('productListModules', ['getProducts']),
+    ...mapActions('productListModules', ['getProducts']),
     getCategory(selected) {
       const vm = this;
       vm.$store.dispatch('productListModules/getCategory', selected);
-      vm.currentCategory = selected;
+    },
+    getLgCategory(selected) {
+      const vm = this;
+      vm.$store.dispatch('productListModules/getLgCategory', selected);
     },
     addToCart(id, qty = 1) {
       this.$store.dispatch('cartsModules/addToCart', { id, qty });
     },
-    openList(e) {
-      $(e.target.parentElement).toggleClass('active');
-    }
+    goDetail(product) {
+      this.$store.dispatch('productListModules/getLgCategory', product.content);
+      // console.log(product.content);
+      this.$router.push(`/productList/${product.id}`);
+    },
+    sortProduct(sortType) {
+      const vm = this;
+      // console.log(sortType);
+      if (sortType === 'highToLow') {
+        vm.sortText = '價格 > 由高到低';
+      } else if (sortType === 'lowToHigh') {
+        vm.sortText = '價格 > 由低到高';
+      } else {
+        vm.sortText = '商品排序';
+      }
+      vm.$store.dispatch('productListModules/SortProduct', sortType);
+    },
   },
   computed: {
-    ...mapGetters('productListModules', ['filterPageProduct']),
+    ...mapGetters('productListModules', ['filterPageProduct', 'currentCategory']),
     ...mapGetters('cartsModules', ['productId', 'singleLoading']),
   },
   created() {
-    if (this.$route.query.category) {
-      this.currentCategory = this.$route.query.category;
-      this.$router.push('/productList');
+    // 從 detail_swiper 傳遞 productId過來 ，因無法在透過 /productDetail/$(id) 切換頁面
+    // 所以先導回這裡，在傳送過去
+    if (this.$route.query.productId) {
+      // eslint-disable-next-line
+      const productId = this.$route.query.productId;
+      this.$router.push(`/productList/${productId}`);
     }
-    this.getProducts(this.currentCategory);
+    this.getProducts();
   },
 };
 </script>
-<style>
-/*
-$main : #f5b937;
-.banner-img {
-  background-image: url('../../assets/images/banner.jpg')
-}
-.list-group .active {
-  background-color: $main;
-}
-.list-group-item {
-  cursor: pointer;
-  border: 0;
-}
-.card {
-  cursor: pointer;
-}
-.card-bg-cover {
-  background-size: cover;
-  background-position: center center;
-  height: 200px;
-}
-.card-bg-cover:hover {
-  background-size: cover;
-  background-position: center center;
-  height: 200px;
-  opacity: 0.8;
-}
-.jumbotron-bg-cover {
-  background-size: cover;
-  background-position: center center;
-  height: 400px;
-}
-.box-shadow {
-  box-shadow: 0 3px 5px  rgba(0, 0, 0, .16);
-}
-.box-shadow:hover {
-  box-shadow: 0 3px 5px  rgba(0, 0, 0, 0.7);
-}
-@keyframes flicker {
-  0%{opacity: 1;}
-  50%{opacity: 0;}
-  100%{opacity: 1;}
-}
-.flicker {
-  animation: flicker 2s linear infinite;
-}
-
-@include media-breakpoint-down(md) {
-  .jumbotron h1 {
-    font-size: 10px;
-  }
-} */
-
-</style>

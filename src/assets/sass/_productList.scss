@@ -1,9 +1,78 @@
 
 .productlist {
+
+  .sort-list {
+    .dropbtn {
+      border: 1px solid $custom-gray;
+      color: white;
+      min-width: 180px;
+      padding: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      button {
+        margin-right: auto;
+        background-color: transparent;
+        border: none;
+      }
+      i {
+        color: #000;
+        transition: all .5s;
+      }
+    }
+    
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      // min-width: 80px;
+      width: 100%;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      transition: all .5s;
+
+    }
+    
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    
+    .dropdown-content a:hover {
+      background-color:$custom-yellow;
+      transition: all .5s;
+    }
+    
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    
+    .dropdown:hover {
+      .dropbtn {
+        // background-color: $custom-yellow;
+        i {
+          // color: $custom-white;
+          transform: rotate(-180deg);
+          transition: all .5s;
+        }
+      }
+    }
+  }
+
   .mainmenu {
     list-style: none;
     padding: 0;
     margin: 0;
+    // 
+    
     li {
       i {
         margin-right:5px; 
@@ -16,7 +85,7 @@
         }
         ul {
           display: block;
-          max-height: 200px;
+          max-height: 500px;
         }
       }
       a {
@@ -40,6 +109,7 @@
       transition: all 0.5s ease-out;
       li {
         margin-left: 20px;
+        margin-bottom: 2px;
         a {
           padding-left:0; 
           padding-right:0; 
@@ -47,6 +117,9 @@
           font-weight: normal;
           // background-color: #999;
           display: inline-block;
+          &.active {
+            border-bottom: 2px solid $custom-yellow;
+          }
           &:hover {
             // background-color: #666;
           }

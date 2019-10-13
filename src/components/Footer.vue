@@ -17,7 +17,7 @@
               </li>
             </ul>
           </div>
-          <div class="col-6 col-md-4 wow fadeIn" data-wow-offset="100" data-wow-delay="1s">
+          <div class="col-6 col-md-4 wow fadeIn" data-wow-offset="100" data-wow-delay=".5s">
             <ul class="list-group">
               <li class="list-group-item h5">CONTACT</li>
               <li class="list-group-item">
@@ -31,11 +31,16 @@
               </li>
             </ul>
           </div>
-          <div class="ml-auto col-md-4">
-          <div class="form-group">
-            <input class="form-control rounded-0" type="text" placeholder="Email">
-            </div>
-            <button href="#" class="btn btn-warning rounded-0 w-100">SUBSCRIBE</button>
+          <div class="ml-auto col-md-4 wow fadeIn" data-wow-offset="100" data-wow-delay="1s">
+            <div class="form-group">
+              <input class="form-control rounded-0" type="email" placeholder="Email"
+              name="email"
+              :class="{'is-invalid':errors.has('email')}" v-validate="'required|email'">
+              </div>
+              <span class="text-danger"
+              v-if="errors.has('email')">{{errors.first('email')}}</span>
+              <a href="#" class="btn btn-warning rounded-0 w-100"
+               @click.prevent="check">SUBSCRIBE</a>
           </div>
         </div>
       </div>
@@ -62,18 +67,25 @@
     </footer>
   </div>
 </template>
-<script>
-import { WOW } from 'wowjs';
 
+<script>
 export default {
-  mounted() {
-    const wow = new WOW({
-      boxClass: 'wow',
-      animateClass: 'animated',
-      offset: 0,
-      mobile: true,
-    });
-    wow.init();
+  methods: {
+    check() {
+      const vm = this;
+      this.$validator.validate().then((valid) => {
+        // 驗證成功
+        if (valid) {
+          vm.$store.dispatch('alertMsgModules/updateMessage', { message: 'SUBSCRIBE 成功', status: 'success' });
+          setTimeout(() => {
+            // reload
+            vm.$router.go(0);
+          }, 1500);
+        } else {
+        // 驗證失敗
+        }
+      });
+    },
   },
 };
 </script>
