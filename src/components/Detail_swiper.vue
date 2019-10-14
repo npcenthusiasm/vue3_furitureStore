@@ -72,6 +72,7 @@ export default {
   },
   created() {
     this.getProducts();
+    this.$store.dispatch('productListModules/getDetailProductId', this.$route.params.productId);
   },
 };
 </script>

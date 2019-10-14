@@ -6,6 +6,7 @@ export default {
   strict: true, // 嚴謹模式
   state: {
     products: [], // 所有
+    detailProductId: '', // 單一產品
     filterProduct: [], // 過濾類別
     currentCategory: '所有商品',
     filterCondition: 'all',
@@ -29,6 +30,9 @@ export default {
         }
       });
     },
+    getDetailProductId(context, detailProductId) {
+      context.commit('DETAILPRODUCT', detailProductId);
+    },
     // 過濾category 之後再 sort 再交給pagination 拉出9筆資料出去
     getCategory(context, { category, filterCondition }) {
       context.commit('CATEGORY', { category, filterCondition });
@@ -49,6 +53,13 @@ export default {
     // 只取得一開始的 所有products
     PRODUCTS(state, products) {
       state.products = products;
+    },
+    DETAILPRODUCT(state, payload) {
+      // console.log(state.products);
+      // console.log(state.filterProduct);
+      // console.log(payload);
+      state.detailProductId = payload;
+      // state.detailProduct = state.products.filter(item => item.id === payload.id);
     },
     CATEGORY(state, payload) {
       state.currentCategory = payload.category;
@@ -112,7 +123,10 @@ export default {
     },
     Related_Products(state) {
       // ProductDetail 的 swiper
-      return state.products.filter(item => item.content === state.currentCategory);
+      // 相關產品不該出現當前產品
+      const current = state.products.find(item => item.id === state.detailProductId);
+      const relate = state.products.filter(item => item.content === state.currentCategory);
+      return relate.filter(item => item.id !== current.id);
     },
     pagination(state) {
       return state.pagination;
