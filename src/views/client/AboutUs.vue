@@ -12,7 +12,7 @@
 
     <div class="row bg-gray">
       <div class="col-md-6 col-12 order-0 order-md-1">
-        <div class="about-img nature"></div>
+        <div class="about-img design"></div>
       </div>
        <div class="col-md-6 p-4 order-1 order-md-0">
         <div class="about-title">
@@ -26,7 +26,7 @@
     </div>
     <div class="row bg-white">
       <div class="col-md-6 col-12">
-        <div class="about-img design"></div>
+        <div class="about-img future"></div>
       </div>
        <div class="col-md-6 p-4">
         <div class="about-title">
@@ -53,67 +53,3 @@
     </div>
   </div>
 </template>
-
-<style lang="scss" scoped>
-@import '../../assets/sass/_custom.scss';
-.aboutUs {
-  .bg-gray {
-    background-color: $custom-gray;
-  }
-  .bg-white {
-    background-color: $custom-white;
-  }
-  .banner-img {
-    background-size: cover;
-    background-position: center center;
-    min-height: 400px;
-    margin-bottom: 0;
-    background-image: url('https://images.unsplash.com/photo-1501238295340-c810d3c156d2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80')
-  }
-  .title {
-    letter-spacing: .2em;
-    text-transform: uppercase;
-    font-size: 1.2em;
-    color: #555;
-    text-align: center;
-  }
-  .about-title {
-    letter-spacing: .2em;
-    text-transform: uppercase;
-    font-size: 1.2em;
-    color: #555;
-    text-align: center;
-    padding: 10px;
-    height: 100%;
-    // border: 2px solid $custom-yellow;
-    h2 {
-      display: inline-block;
-      padding: 10px 0;
-      font-weight: 600;
-      border-bottom: 2px solid $custom-yellow;
-    }
-    p {
-      text-align: left;
-    }
-  }
-  .people {
-    background-image: url(https://images.unsplash.com/photo-1504022462188-88f023db97bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);
-    background-position: right;
-  }
-  .design {
-    background-image: url(https://images.unsplash.com/photo-1511448962213-2f9bc14ed197?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80);
-    background-position: center;
-  }
-  .nature {
-    background-image: url(https://images.unsplash.com/photo-1521459382675-a3f2f35a6b9a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80);
-    background-position: top;
-  }
-  .about-img {
-    // background-position: center;
-    background-size: cover;
-    min-height: 400px;
-    width: 100%;
-    height: 100%;
-  }
-}
-</style>

@@ -26,6 +26,15 @@
       }
     }
   }
+  .copyright {
+    ul {
+      li {
+        a:hover {
+          color: $custom-yellow;
+        }
+      }
+    }
+  }
   input[type="text"] {
     border: 0;
     border-bottom:1px solid $custom-gray;

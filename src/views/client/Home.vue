@@ -3,7 +3,8 @@
     <div class="container-fluid">
       <div class="row header-wrap">
         <div class="col-4 pr-5 left-content">
-          <img class="img-fluid" src="https://images.unsplash.com/photo-1534353436294-0dbd4bdac845?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="">
+          <img class="img-fluid" src="../../assets/images/home-header-2.jpg" >
+
           <div class="header">
             <h2 class="header-title">為即將到來的冷冽季節做好準備～</h2>
             <p class="header-text">充滿個人風格和正能量的新色和材質即將成為新潮流!
@@ -13,7 +14,7 @@
           </div>
         </div>
         <div class="col-8 pl-5 pt-5 right-content">
-          <img class="img-fluid" src="https://images.unsplash.com/photo-1547110287-71448271b1de?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80" alt="">
+          <img class="img-fluid" src="../../assets/images/home-header-1.jpg">
         </div>
       </div>
     </div>
