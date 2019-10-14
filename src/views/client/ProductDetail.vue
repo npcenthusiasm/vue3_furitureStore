@@ -8,7 +8,7 @@
             <li class="breadcrumb-item"><router-link to="/">首頁</router-link></li>
             <li class="breadcrumb-item"><router-link to="/productList">商品列表</router-link></li>
             <li class="breadcrumb-item">
-              <router-link :to="{ name:'ProductList',query: { category: product.category }}">
+              <router-link to="/productList">
                 {{product.category}}
               </router-link>
             </li>
@@ -97,6 +97,7 @@ export default {
         if (response.data.success) {
           vm.product = response.data.product;
           vm.$store.dispatch('updateLoading', false);
+          this.$store.dispatch('productListModules/getCategory', { category: response.data.product.content, filterCondition: 'content' });
         }
       });
     },
@@ -117,6 +118,7 @@ export default {
   created() {
     this.productId = this.$route.params.productId;
     this.getProduct();
+    // console.log(this.product.content, 'detail')
   },
 };
 </script>

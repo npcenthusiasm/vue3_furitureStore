@@ -39,7 +39,7 @@
       <div class="row mb-4">
         <div class="col-md-3 mb-4">
          <ul class="mainmenu">
-          <li><a href="#" @click.prevent="getLgCategory('所有商品')" class="main-link"
+          <li><a href="#" @click.prevent="getAllProduct('所有商品')" class="main-link"
           :class="{'active': currentCategory === '所有商品'}">
             所有商品</a>
           <li :class="{'active': openStatus === '各式桌椅'}">
@@ -167,45 +167,30 @@ export default {
   },
   data() {
     return {
-      // currentCategory: '全部商品',
       openStatus: '',
-      selected: '',
-      sortText: '商品排序',
     };
   },
   methods: {
     ...mapActions('productListModules', ['getProducts']),
-    getCategory(selected) {
-      const vm = this;
-      vm.$store.dispatch('productListModules/getCategory', selected);
+    getCategory(category) {
+      this.$store.dispatch('productListModules/getCategory', { category, filterCondition: 'category' });
     },
-    getLgCategory(selected) {
-      const vm = this;
-      vm.$store.dispatch('productListModules/getLgCategory', selected);
+    getAllProduct(category) {
+      this.$store.dispatch('productListModules/getCategory', { category, filterCondition: 'all' });
     },
     addToCart(id, qty = 1) {
       this.$store.dispatch('cartsModules/addToCart', { id, qty });
     },
     goDetail(product) {
-      this.$store.dispatch('productListModules/getLgCategory', product.content);
-      // console.log(product.content);
+      this.$store.dispatch('productListModules/getCategory', { category: product.content, filterCondition: 'content' });
       this.$router.push(`/productList/${product.id}`);
     },
     sortProduct(sortType) {
-      const vm = this;
-      // console.log(sortType);
-      if (sortType === 'highToLow') {
-        vm.sortText = '價格 > 由高到低';
-      } else if (sortType === 'lowToHigh') {
-        vm.sortText = '價格 > 由低到高';
-      } else {
-        vm.sortText = '商品排序';
-      }
-      vm.$store.dispatch('productListModules/SortProduct', sortType);
+      this.$store.dispatch('productListModules/SortProduct', sortType);
     },
   },
   computed: {
-    ...mapGetters('productListModules', ['filterPageProduct', 'currentCategory']),
+    ...mapGetters('productListModules', ['filterPageProduct', 'currentCategory', 'sortText']),
     ...mapGetters('cartsModules', ['productId', 'singleLoading']),
   },
   created() {

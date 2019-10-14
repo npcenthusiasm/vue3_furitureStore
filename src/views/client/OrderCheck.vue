@@ -61,7 +61,7 @@
        <div class="row">
         <div class="col-md-8">
            <div class="alert alert-warning">
-            輸入「magic」，5折 優惠
+            輸入「autumn」，8折 優惠
           </div>
           <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="輸入優惠碼"

@@ -15,8 +15,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-// import 'swiper/dist/css/swiper.css';
+import { mapGetters, mapActions } from 'vuex';
 import { swiper, swiperSlide } from 'vue-awesome-swiper';
 
 export default {
@@ -66,12 +65,13 @@ export default {
         query: { productId: product.id },
       });
     },
+    ...mapActions('productListModules', ['getProducts']),
   },
   computed: {
-    ...mapGetters('productListModules', ['Related_Products']),
+    ...mapGetters('productListModules', ['currentCategory', 'Related_Products']),
   },
   created() {
-    // this.getProducts();
+    this.getProducts();
   },
 };
 </script>
@@ -89,7 +89,6 @@ export default {
         border: 1px solid #f1be4f;
         .detail {
           color: #f5b937;
-          // color: #9f5149;
       }
     }
   }

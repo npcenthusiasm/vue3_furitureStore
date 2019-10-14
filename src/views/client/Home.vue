@@ -115,7 +115,7 @@ export default {
   },
   methods: {
     goPrductList(category) {
-      this.$store.dispatch('productListModules/getLgCategory', category);
+      this.$store.dispatch('productListModules/getCategory', { category, filterCondition: 'content' });
       this.$router.push('/productList');
     },
   },
